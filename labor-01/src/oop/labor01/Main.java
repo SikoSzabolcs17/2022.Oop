@@ -48,7 +48,7 @@ public class Main {
         return (byte)array[order];
     }
 
-    public static double mean(double array[]){
+    public static double mean(double[] array){
         if(array.length==0)return Double.NaN;
 
         double sum = 0;
@@ -59,7 +59,7 @@ public class Main {
         return sum/array.length;
     }
 
-    public static double stddev(double array[]){
+    public static double stddev(double[] array){
         double average = mean(array);
         double sum = 0;
 
