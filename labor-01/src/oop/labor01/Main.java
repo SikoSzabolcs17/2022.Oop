@@ -46,6 +46,9 @@ public class Main {
                 max[0]=max[1];
                 max[1]=array[i];
             }
+            else if(array[i]>max[0]){
+                max[0]=array[i];
+            }
         }
         return max;
     }
