@@ -6,6 +6,48 @@ import java.util.Random;
 
 public class Main {
 
+    public static void harmadikFeladat(){
+
+        String str="ALMAFA";
+
+        for (int i=0;i<str.length();++i){
+            for(int j=0;j<=i;++j){
+                System.out.print(str.charAt(j));
+            }
+            System.out.print('\n');
+        }
+    }
+    public static void negyedikFeladat(){
+        String name = "Kerekes Balint Adam Jozsef";
+        String[] splitted = name.split(" ");
+        String monogram="";
+
+        for(int i = 0; i < splitted.length; i++) {
+            monogram += splitted[i].charAt(0);
+        }
+        System.out.println(monogram);
+
+
+    }
+
+    public static int countBits(int number){
+        int counter=0;
+        while(number!=0){
+
+            counter += number&1;
+            number= number>>1;
+        }
+        return counter;
+    }
+    public static byte getBit(int number, int order){
+        int i=0;
+        int[] array = new int[10];
+        while(number!=0) {
+            array[i++] = number % 2;
+        }
+        return (byte)array[order];
+    }
+
     public static double mean(double[] array){
         if(array.length==0)return Double.NaN;
 
