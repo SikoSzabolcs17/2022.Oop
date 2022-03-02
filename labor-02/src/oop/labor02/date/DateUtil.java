@@ -22,13 +22,16 @@ public class DateUtil {
         }
         else return false;
 
-        if(day>30 && day<32) {
-            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 7 || month == 10 || month == 12) {
-                return true;
+        if(day<32) {
+
+            if (day > 30 ) {
+                if (month == 1 || month == 3 || month == 5 || month == 7 || month == 7 || month == 10 || month == 12) {
+                    return true;
+                } else return false;
             }
-            else return false;
+            return true;
         }
-        return true;
+        else return false;
 
     }
 }

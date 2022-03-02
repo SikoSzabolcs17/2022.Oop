@@ -27,10 +27,10 @@ public class MyDate {
         String date="";
         Integer aux = new Integer(year);
         date += aux.toString();
-        date += ". ";
+        date += ".";
         aux = month;
         date += aux.toString();
-        date +=". ";
+        date +=".";
         aux = day;
         date +=aux.toString();
         return date;
