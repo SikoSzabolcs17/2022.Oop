@@ -57,6 +57,7 @@ public class Customer {
                 for (int j = i; j < numAccounts-1 ; j++) {
                     bankAccounts[j] = bankAccounts[j+1];
                 }
+                bankAccounts[numAccounts-1] = null;
                 numAccounts--;
                 return;
             }
