@@ -2,8 +2,6 @@ package car;
 
 import car.Car;
 
-import javax.sound.midi.Soundbank;
-import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.File;
