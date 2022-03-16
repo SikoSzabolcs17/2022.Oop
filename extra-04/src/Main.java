@@ -161,7 +161,7 @@ public class Main {
         courses = readCourseFile("extra4_university.csv");
         readStudentsFile("extra4_students.csv");
         printCourses();
-        System.out.println("\n--------------------------\n");
+        System.out.println("\n---------------------------\n");
         cancelEnrollments("extra4_cancellation.csv");
         printCourses();
     }
