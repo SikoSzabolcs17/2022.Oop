@@ -46,11 +46,11 @@ public class Training {
         return this.enrolledStudents.size();
     }
     public void printToFile(){
-        String fileName = String.format("%s_%s_s.csv",course.getName(),startDate,endDate);
+        String fileName = String.format("%s_%s_%s.csv",course.getName(),startDate,endDate);
 
         try(PrintStream printStream = new PrintStream(new File(fileName))){
 
-            printStream.println(course.getName() +" Number of hours: "+ course.getNumHours());
+            printStream.println(course.getName() +"\n - Number of hours: "+ course.getNumHours());
             printStream.println(course.getDescription());
 
             for(Student student:enrolledStudents){

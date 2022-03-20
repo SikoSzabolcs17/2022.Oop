@@ -7,7 +7,6 @@ import oop.labor05.models.Training;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -65,44 +64,51 @@ public class Main {
         }
         System.out.println();
     }
+    public static void printStudentCourses(Student student, ArrayList<Training> trainings){
+        System.out.println(student.getFirstName() +" "+ student.getLastName());
+        System.out.print("  ");
+
+        for (int i = 0; i < trainings.size(); i++) {
+            if(trainings.get(i).findById(student.getId())!=null){
+                System.out.print(trainings.get(i).getCourse().getName()+ " ");
+            }
+        }
+        System.out.print("\n\n");
+    }
 
 
     public static void main(String[] args) {
         ArrayList<Course>courses = readCourses("courses.csv");
-        printCourses(courses);
         ArrayList<Student>studentArrayList =readStudents("students.csv");
-        printStudents(studentArrayList);
 
         ArrayList<Training>trainingArrayList = new ArrayList<>();
 
-        for (Course course:courses){
+        for (int i =0; i< courses.size(); ++i){
 
             Random random = new Random();
-            int day1 = random.nextInt(21,26);
-            int day2 = random.nextInt(21,26);
+            int day1 = random.nextInt(21,25);
+            int day2 = random.nextInt(day1+1,26);
 
-            if(day1>day2){
-                int aux = day1;
-                day1 = day2;
-                day2 = day1;
-            }
             double price = random.nextDouble(1000,2000);
 
-            trainingArrayList.add(new Training(course,new MyDate(2022,3,day1),
+            trainingArrayList.add(new Training(courses.get(i),new MyDate(2022,3,day1),
                     new MyDate(2020,3,day2),price));
 
             int counter = 0;
 
-            while (counter<10 && counter<trainingArrayList.size()){
-                int index = random.nextInt(0,trainingArrayList.size());
+            while (counter<10 && counter<studentArrayList.size()){
+                int index = random.nextInt(0,studentArrayList.size());
 
-                if(trainingArrayList.get(counter).enroll(studentArrayList.get(index))){
+                if(trainingArrayList.get(i).enroll(studentArrayList.get(index))){
                     counter++;
                 }
             }
         }
         for(Training training: trainingArrayList){
             training.printToFile();
+        }
+        for (Student student:studentArrayList){
+            printStudentCourses(student,trainingArrayList);
         }
     }
 }
