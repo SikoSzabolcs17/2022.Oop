@@ -1,4 +1,4 @@
-package oop.labor06;
+package oop.labor06.lab6_1;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -23,7 +23,7 @@ public class Bank {
     }
     private void printCustomers( PrintStream ps){
 
-        ps.println("ID, Firstname, Last name, Number of bank accounts");
+        ps.println("ID, Firstname, Last name, Number of bank accounts:");
 
         for( Customer customer: customers ){
             ps.println( customer.getId()+", " + customer.getFirstName() +", "+
