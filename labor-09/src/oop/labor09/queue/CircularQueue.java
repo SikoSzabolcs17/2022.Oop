@@ -1,5 +1,8 @@
 package oop.labor09.queue;
 
+
+import java.util.Arrays;
+
 public class CircularQueue implements IQueue{
 
     private int front;
@@ -29,7 +32,6 @@ public class CircularQueue implements IQueue{
     @Override
     public Object deQueue() {
         if(!isEmpty()){
-            // Itt meg kell kod
             Object element = items[front];
 
             if (front == rear) {
@@ -60,4 +62,39 @@ public class CircularQueue implements IQueue{
     public boolean isFull() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "CircularQueue{" +
+                "front=" + front +
+                ", rear=" + rear +
+                ", items=" + Arrays.toString(items) +
+                ", CAPACITY=" + CAPACITY +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CircularQueue that = (CircularQueue) o;
+
+        int i = this.front;
+        int j = that.front;
+
+        while (i <= rear) {
+
+            i = i % CAPACITY;
+            j = j % that.CAPACITY;
+
+            if (!this.items[i].equals(that.items[j])) {
+                return false;
+            }
+            i++;
+            j++;
+        }
+
+        return true;
+    }
+
 }
