@@ -7,11 +7,7 @@ public class Main {
 
         Company company = new Company("Microsoft");
 
-        company.hire(new Manager("Patricia","Schifler",6000, new MyDate(2002,3,5),"Frontend"));
-
-        company.hire(new Employee("Robert","Ambrus",4000,new MyDate(2002,4,11)));
-        company.hire(new Employee("Kinga","Olah",4000,new MyDate(1999,6,21)));
-        company.hire(new Employee("Johanna","Rigmannyi",4000,new MyDate(2002,12,22)));
+        company.hireAll("employees.csv");
 
         company.printAll(System.out);
 
@@ -26,9 +22,9 @@ public class Main {
          */
         //company.sortByComparator(Comparator.comparing(Employee::getFirstName));
 
-        company.sortByComparator(Employee.comperByFullName);
+        company.sortByComparator(Employee.sortByManagerFirstAlphabetic);
 
-        System.out.println("\nSorted by birth date\n");
+        System.out.println("\nAfter Sort:\n");
 
         company.printAll(System.out);
 

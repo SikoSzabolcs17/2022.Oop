@@ -22,6 +22,30 @@ public class Employee {
         }
     };
 
+    public static Comparator<Employee> comperBySaleryDesc = new Comparator<Employee>() {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return Double.compare(o2.getSalary(),o1.getSalary());
+        }
+    };
+
+    public static Comparator<Employee> sortByManagerFirstAlphabetic = new Comparator<Employee>() {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            if(o1.getClass() != o2.getClass()){
+                if(o1.getClass() == Manager.class){
+                    return -1;
+                }
+                else{
+                    return 1;
+                }
+            }
+            String o1Name = o1.getFirstName() + o2.getLastName();
+            String o2Name = o2.getFirstName() + o2.getLastName();
+            return o1Name.compareTo(o2Name);
+        }
+    };
+
     public Employee(String firstName, String lastName, double salary, MyDate birtDate) {
         this.firstName = firstName;
         this.lastName = lastName;

@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        DictionaryService service =
-                new DictionaryService(DictionaryType.ARRAY_LIST);
+        DictionaryService service = new DictionaryService(DictionaryType.ARRAY_LIST);
+
         Scanner scanner = new Scanner(System.in);
         while( true ) {
             System.out.print("Word to find ( Enter <end> for exit): ");

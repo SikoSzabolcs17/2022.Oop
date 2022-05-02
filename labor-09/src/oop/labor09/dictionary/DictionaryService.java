@@ -13,6 +13,7 @@ public class DictionaryService {
     public DictionaryService(DictionaryType dictionaryType){
 
         dictionary = DictionaryProvider.createDictionary(dictionaryType);
+        findWordsFile("dict.txt");
     }
     public boolean findWord(String word){
         return dictionary.find(word);
