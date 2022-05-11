@@ -1,7 +1,7 @@
 package oop.labor11.labor11_5;
 
 public class Main {
-    public static void main(String[] args) throws MatrixException {
+    public static void main(String[] args) {
         double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
         Matrix m0 = new Matrix(d);
         System.out.println("m0 rows: " + m0.getRows()+", cols: " + m0.getColumns());
@@ -24,13 +24,24 @@ public class Main {
         System.out.println("m2: ");
         m2.printMatrix();
         System.out.println("Sum: m1 + m2");
-        Matrix.add(m1, m2).printMatrix();
+        try {
+            Matrix.add(m1, m2).printMatrix();
+        }
+        catch (MatrixException e){
+        }
+
         Matrix m3 = new Matrix(3, 4);
         m3.fillRandom(0, 1);
         System.out.println("m3: ");
         m3.printMatrix();
         System.out.println("Product: m1 * m3");
-        Matrix.multiply(m1, m3).printMatrix();
+        try{
+            Matrix.multiply(m1, m3).printMatrix();
+        }
+        catch (MatrixException e){
+
+        }
+
         System.out.println("Transpose(m3)");
         Matrix.transpose( m3 ).printMatrix();
     }
