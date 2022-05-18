@@ -2,9 +2,7 @@ package oop.labor12.labor12_3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -63,22 +61,26 @@ public class Main {
         }
 
     }
-    public static void printAvges(Bac bac){
+    public static HashSet<Student> failedStudents(Bac bac){
         HashMap<Integer,Student> students = bac.getStudentHashMap();
-        int counter = 0;
+
+        HashSet<Student> failedStundens = new HashSet<>();
 
         for (Integer key:students.keySet()){
             double avg = 0;
             for (Mark mark:students.get(key).getMarks()){
+                if(mark.getGrade() < 5){
+                    avg = -1;
+                    break;
+                }
                 avg+= mark.getGrade();
             }
             avg = avg / students.get(key).getMarks().size();
-            if(avg >=6){
-                counter++;
+            if(avg <6){
+                failedStundens.add(students.get(key));
             }
-            //System.out.println(students.get(key).getFirstName() + " " + students.get(key).getLastName() + ": AVG: " + avg);
         }
-        System.out.println(counter);
+        return failedStundens;
     }
 
     public static void main(String[] args) {
@@ -87,13 +89,26 @@ public class Main {
         readMarkFromFile("magyar.txt","magyar",bac);
         readMarkFromFile("roman.txt","roman",bac);
 
-        /*
-        for (Integer key:bac.getStudentHashMap().keySet()){
-           System.out.println(bac.getStudentHashMap().get(key));
+
+        HashSet<Student> failedStudents = failedStudents(bac);
+
+        System.out.println("From " + bac.getStudentHashMap().size() + " students " + (bac.getStudentHashMap().size()-failedStudents.size()) + " has passed the bac!");
+
+
+        ArrayList<Student> sortedList = new ArrayList<>(failedStudents);
+
+        sortedList.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                String name1 = o1.getFirstName() + o1.getLastName();
+                String name2 = o2.getFirstName() + o2.getLastName();
+                return name1.compareTo(name2);
+            }
+        });
+
+        for (Student student:sortedList){
+            System.out.println(student);
         }
 
-         */
-
-        printAvges(bac);
     }
 }
